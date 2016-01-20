@@ -24,3 +24,21 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
     && rm "node-v$NODE_VERSION-linux-x64.tar.gz" SHASUMS256.txt.asc \
     && npm install -g npm@"$NPM_VERSION" \
     && npm cache clear
+
+VOLUME /.ssh_host
+
+RUN apt-get install -y git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN  echo "    IdentityFile /.ssh/id_rsa" >> /etc/ssh/ssh_config
+
+
+RUN mkdir -p /var/git/finance \
+&& cd /var/git/finance \
+&& git clone https://github.com/no7dw/warning-system.git \
+&& cd warning-system \
+&& npm install
+
+EXPOSE 1337
+#CMD 'git'
