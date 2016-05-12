@@ -34,11 +34,7 @@ RUN apt-get install -y git && \
 RUN  echo "    IdentityFile /.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 
-RUN mkdir -p /var/git/finance \
-&& cd /var/git/finance \
-&& git clone https://github.com/no7dw/warning-system.git \
-&& cd warning-system \
-&& npm install
+#RUN mkdir -p /var/git/finance \
 
 EXPOSE 1337
 #CMD 'git'
