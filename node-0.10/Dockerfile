@@ -34,7 +34,11 @@ RUN apt-get install -y git && \
 RUN  echo "    IdentityFile /.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 
-#RUN mkdir -p /var/git/finance \
+RUN mkdir -p /var/git/finance 
+#COPY . /var/git/finance 
+#APP . /var/git/finance
+#better mount when run
+#dengwei@dengweis-MacBook-Pro:~/docker$ docker run -v /var/git/finance/fin_sails_koala:/var/git/ -it nodejs010 /bin/bash
 
 EXPOSE 1337
 #CMD 'git'
