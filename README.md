@@ -17,7 +17,7 @@ So, you can mount files or directories on OS X using.
 
     docker run -v /Users/<path>:/<container path> ...
 
-    so as windows, On Windows, mount directories using:
+so as windows, On Windows, mount directories using:
 
     docker run -v /c/Users/<path>:/<container path> ...
 
