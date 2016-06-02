@@ -27,12 +27,15 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 
 VOLUME /.ssh_host
 
-RUN apt-get install -y git && \
+RUN apt-get update && \
+    apt-get install -y git && \
+    apt-get install -y telnet && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN  echo "    IdentityFile /.ssh/id_rsa" >> /etc/ssh/ssh_config
 
+RUN npm install -g sails
 
 RUN mkdir -p /var/git/finance 
 #COPY . /var/git/finance 
